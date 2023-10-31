@@ -1,5 +1,5 @@
 package com.project.passmanager.main.config;
-
+// надо ли эту папку также переносить в папку регистрашн
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

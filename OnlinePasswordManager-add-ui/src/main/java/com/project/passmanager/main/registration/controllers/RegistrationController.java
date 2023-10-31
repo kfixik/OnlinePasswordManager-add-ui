@@ -1,7 +1,7 @@
-package com.project.passmanager.main.controllers;
+package com.project.passmanager.main.registration.controllers;
 
-import com.project.passmanager.main.database.models.User;
-import com.project.passmanager.main.services.UserService;
+import com.project.passmanager.main.registration.models.UserRegistration;
+import com.project.passmanager.main.registration.services.UserRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 
 public class RegistrationController {
-    private final UserService userService;
+    private final UserRegistrationService userRegistrationService;
 
     @Autowired
-    public RegistrationController(UserService userService) {
-        this.userService = userService;
+    public RegistrationController(UserRegistrationService userRegistrationService) {
+        this.userRegistrationService = userRegistrationService;
     }
     @GetMapping("/registration")
     public String registration()
@@ -23,16 +23,16 @@ public class RegistrationController {
         return "registration";
     }
     @PostMapping("/registration")
-    public String adduser(User user, Model model)
+    public String adduser(UserRegistration userRegistration, Model model)
     {
         try
         {
-            userService.addUser(user);
+            userRegistrationService.addUser(userRegistration);
             return "redirect:/login";
         }
         catch (Exception ex)
         {
-            model.addAttribute("message", "User exists");
+            model.addAttribute("message", "UserRegistration exists");
             return "registration";
         }
     }

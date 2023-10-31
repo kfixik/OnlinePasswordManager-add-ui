@@ -1,5 +1,6 @@
-package com.project.passmanager.main.database.models;
+package com.project.passmanager.main.registration.models;
 
+import com.project.passmanager.main.registration.models.Role;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -8,7 +9,7 @@ import java.util.Set;
 @Entity
 @Table(name = "my users")
 
-public class User {
+public class UserRegistration {
     @Id
     @GeneratedValue
     private Long id;
@@ -20,10 +21,10 @@ public class User {
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name="user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
-    public User ()
+    public UserRegistration()
     {
     }
-    public User (String name, String password, Role role) {
+    public UserRegistration(String name, String password, Role role) {
         this.username = name;
         this.password = password;
         roles.add(role);
